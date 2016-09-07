@@ -12,8 +12,10 @@ class MerchantsController < ApplicationController
   def create
     @merchant = Merchant.new(merchant_params)
     if @merchant.save
+      flash[:notice] = "Merchant Successfully Saved"
       redirect_to merchant_path(@merchant)
     else
+      flash[:error] = @merchant.errors.full_messages.join(", ")
       render :new
     end
   end
@@ -26,14 +28,17 @@ class MerchantsController < ApplicationController
 
   def update
     if @merchant.update(merchant_params)
+      flash[:notice] = "Merchant Successfully Updated"
       redirect_to merchant_path(@merchant)
     else
+      flash[:error] = @merchant.errors.full_messages.join(", ")
       render :edit
     end
   end
 
   def destroy
     @merchant.destroy
+    flash[:notice] = "Merchant Successfully Deleted"
     redirect_to merchants_path
   end
 
