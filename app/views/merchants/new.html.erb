@@ -1,0 +1,18 @@
+<h1>Create New Merchant</h1>
+<%= form_for(@merchant) do |f| %>
+  <% if @merchant.errors.any? %>
+    <ul>
+      <% @merchant.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+    <% end %>
+
+    <%= f.label :name %>
+    <%= f.text_area :name %><br>
+
+    <%= f.label :items_type %>
+    <%= f.text_area :items_type %><br>
+
+    <%= f.submit %>
+<% end %>

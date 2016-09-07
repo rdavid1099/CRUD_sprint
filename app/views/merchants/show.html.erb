@@ -1,0 +1,7 @@
+<h1><%= @merchant.name.upcase %>'s Page</h1>
+<h3>Selling: <%= @merchant.items_type.upcase %></h3>
+<p>
+  <%= link_to "Edit #{@merchant.name}", edit_merchant_path(@merchant) %><br>
+  <%= link_to "Delete #{@merchant.name}", merchant_path(@merchant), method: :delete %>
+  <%= link_to "All Merchants", merchants_path %>
+</p>
